@@ -1,0 +1,31 @@
+{
+  "name": "webhook",
+  "version": "1.0.0",
+  "description": "Mandrill inbound email webhook.",
+  "main": "webhook.js",
+  "scripts": {
+    "start": "node webhook.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jobsamuel/webhook.git"
+  },
+  "keywords": [
+    "mandrill",
+    "email",
+    "webhook",
+    "backup"
+  ],
+  "author": "Jobsamuel Núñez <jobsamuel.nunez@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jobsamuel/webhook/issues"
+  },
+  "homepage": "https://github.com/jobsamuel/webhook#readme",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.4",
+    "firebase": "^2.4.0"
+  }
+}
