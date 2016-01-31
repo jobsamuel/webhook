@@ -9,14 +9,8 @@ const ref = new Firebase(FBURI);
 router.route('/')
   .head(function(req, res) {
     res.send({
-      message: 'Hi, I\'m webhook!'
+      message: 'Hello world!'
     });
-  })
-
-  .get(function(req, res) {
-      res.send({
-        status: 'OK'
-      });
   })
 
   .post(function(req, res) {
@@ -39,5 +33,12 @@ router.route('/')
       });
     });
   });
+
+router.get('/about', function(req, res) {
+  res.send({
+    message: 'Hi, I\'m webhook!',
+    status: 'OK'
+  });
+});
 
 module.exports = router;
