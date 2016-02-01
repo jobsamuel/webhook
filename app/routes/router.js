@@ -2,6 +2,7 @@
 
 const Firebase = require('firebase');
 const express = require('express');
+const async = require('async');
 const router = express.Router();
 const FBURI = process.env.FBURI;
 const ref = new Firebase(FBURI);
@@ -16,20 +17,26 @@ router.route('/')
   .post(function(req, res) {
     const mandrillEvent = JSON.parse(req.body.mandrill_events);
     
-    mandrillEvent.map(function(event) {
+    async.each(mandrillEvent, function(event, callback) {
       ref.child('inbound').push(event, function(error) {
         if (error) {
-          return res
-            .status(501)
-            .send({
-              sync: 'failed', 
-              error: error
-            });
+          return callback(error);
         }
         
-        res.send({
-          sync: 'successfull'
-        });
+        callback();
+      });
+    }, function(error) {
+      if (error) {
+        return res
+          .status(500)
+          .send({
+            sync: 'failed', 
+            error: error
+          });
+      }
+
+      res.send({
+        sync: 'successfull'
       });
     });
   });
