@@ -5,12 +5,6 @@ const TOKEN = process.env.MANDRILL_TOKEN;
 const m = new mandrill.Mandrill(TOKEN);
 
 function send(data, callback) {
-  if (!data.email || typeof data.email !== 'string') {
-    const message = `Expected email field to be a String but received ${data.email}`;
-    const error = new Error(message);
-    
-    return callback(error);
-  }
 
   /* message
    * Object containing the email configuration.
