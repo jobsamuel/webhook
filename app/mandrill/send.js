@@ -38,8 +38,8 @@ function send(data, callback) {
         'rcpt': data.sender,
         'vars': [
           {
-            'name': 'timestamp',
-            'content': data.timestamp
+            'name': 'todo',
+            'content': 'todo'
           }
         ]
       }],
@@ -50,15 +50,15 @@ function send(data, callback) {
   const template_content = [
       {
           'name': 'header',
-          'content': 'header'
+          'content': data.header
       },
       {
           'name': 'body',
-          'content': 'body'
+          'content': data.body
       },
       {
           'name': 'footer',
-          'content': 'footer'
+          'content': data.footer
       }
   ];
 
