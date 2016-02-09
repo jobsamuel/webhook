@@ -1,6 +1,7 @@
 'use strict';
 
 const Firebase = require('firebase');
+const send = require('./../mandrill/send');
 const FBURI = process.env.FBURI;
 const ref = new Firebase(FBURI);
 
@@ -27,6 +28,19 @@ function processor() {
         }
 
         ref.child('inbound').child(key).child('processed').set(true);
+
+        const data = {
+          sender: email.email,
+          addressee: email.from_email,
+          subject: email.subject,
+          timestamp: email.timestamp
+        };
+
+        send(data, function(err) {
+          if (err) {
+            return console.log(err);
+          }
+        });
       });
     }
   });

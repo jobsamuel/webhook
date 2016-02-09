@@ -27,6 +27,7 @@
     "async": "^1.5.2",
     "body-parser": "^1.14.2",
     "express": "^4.13.4",
-    "firebase": "^2.4.0"
+    "firebase": "^2.4.0",
+    "mandrill-api": "^1.0.45"
   }
 }
